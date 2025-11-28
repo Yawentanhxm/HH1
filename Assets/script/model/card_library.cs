@@ -37,9 +37,24 @@ public class CardLibary
     public void SaveLibrary()
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, "data/player_library_data.json");
-        string jsonContent = JsonUtility.ToJson(cardList);
-        Debug.Log($"cardList {jsonContent}");
+        CardList temp = new CardList();
+        temp.cardList = cardList;
+        string jsonContent = JsonUtility.ToJson(temp);
         File.WriteAllText(filePath, jsonContent);
         Debug.Log($"cardList 保存成功");
+    }
+    // 保持指定卡片id数据
+
+    public void SaveCardData(CardData cardData)
+    {
+        for (int i = 0; i < cardList.Count; i++)
+        {
+            if (cardList[i].id == cardData.id)
+            {
+                cardList[i] = cardData;
+                SaveLibrary();
+                return;
+            }
+        }
     }
 }

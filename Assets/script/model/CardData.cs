@@ -8,7 +8,7 @@ using UnityEngine;
 public class CardData
 {
     [Header("基础信息")]
-    public string cardID;
+    public string id;
     public string cardName;
     public int cardNum;
     public int drawCardNum;

@@ -29,7 +29,7 @@ public class TayinEntity : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
     }
 
-    public void Init(int id, string name, EffectEntity effectEntity, List<int> data)
+    public TayinEntity(int id, string name, EffectEntity effectEntity, List<int> data)
     {
         this.id = id;
         this.Name = name;
@@ -71,6 +71,10 @@ public class TayinEntity : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             CardDropTarget cardDropTarget = dropTarget.GetComponent<CardDropTarget>();
             if (cardDropTarget != null)
             {
+                // 修改牌库中对应卡片id的数据
+                Card card = dropTarget.GetComponent<Card>();
+                card.cardData.tayinId = id;
+                card.SaveToLibrary();
                 cardDropTarget.AssignTayin(this);
                 // 不销毁对象，而是隐藏它
                 gameObject.SetActive(false);
@@ -81,5 +85,12 @@ public class TayinEntity : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         // 如果没有拖拽到有效目标，则回到原位
         transform.SetParent(originalParent);
         rectTransform.anchoredPosition = originalPosition;
+    }
+    public void SetTayinData(TayinEntity tayinEntity)
+    {
+        id = tayinEntity.id;
+        Name = tayinEntity.Name;
+        effectEntity = tayinEntity.effectEntity;
+        data = tayinEntity.data;
     }
 }

@@ -38,7 +38,8 @@ public class TayinPanel : MonoBehaviour
             // 设置相对于当前父节点相对坐标的模型
             GameObject tayin = Instantiate(tayinPrefab, rootTransform);
             TayinEntity tayinEntity = tayin.GetComponent<TayinEntity>();
-            tayinEntity = gameState.tayinLibrary.GetRandomTayinData();
+            TayinEntity temp = gameState.tayinLibrary.GetRandomTayinData();
+            tayinEntity.SetTayinData(temp);
             // 设置相对于当前父节点相对坐标的模型
             tayin.transform.localPosition = new Vector3(0, 250 - i * 250, 0);
             Debug.Log("拓印技能名称：" + tayinEntity.Name);

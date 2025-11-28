@@ -35,9 +35,8 @@ public class TayinLibrary
             for (int i = 0; i < temp.tayinList.Length; i++)
             {
                 TayinData data = temp.tayinList[i];
-                TayinEntity tayinEntity = new TayinEntity();
                 EffectEntity effect = effectFactory.GetEffect(data.effect_id);
-                tayinEntity.Init(data.id, data.name, effect, data.data);
+                TayinEntity tayinEntity = new TayinEntity(data.id, data.name, effect, data.data);
                 tayinList.Add(tayinEntity);
                 Debug.Log("拓印技能：" + tayinEntity.Name + "加载成功" + "对应技能：" + data.effect_id + "加载成功");
             }

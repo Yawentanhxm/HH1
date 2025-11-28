@@ -2,7 +2,7 @@
     "cardList":[
         {
             "id": "1",
-            "name": "A",
+            "cardName": "A",
             "cardNum": 1,
             "drawCardNum": 1,
             "executeCardNum": 1,
@@ -12,7 +12,7 @@
         },
         {
             "id": "2",
-            "name": "2",
+            "cardName": "2",
             "cardNum": 12,
             "drawCardNum": 2,
             "executeCardNum": 2,
@@ -22,7 +22,7 @@
         },
         {
             "id": "3",
-            "name": "3",
+            "cardName": "3",
             "cardNum": 3,
             "drawCardNum": 3,
             "executeCardNum": 3,
@@ -32,7 +32,7 @@
         },
         {
             "id": "4",
-            "name": "4",
+            "cardName": "4",
             "cardNum": 4,
             "drawCardNum": 4,
             "executeCardNum": 4,
@@ -42,7 +42,7 @@
         },
         {
             "id": "5",
-            "name": "5",
+            "cardName": "5",
             "cardNum": 5,
             "drawCardNum": 5,
             "executeCardNum": 5,
@@ -52,7 +52,7 @@
         },
         {
             "id": "6",
-            "name": "6",
+            "cardName": "6",
             "cardNum": 6,
             "drawCardNum": 6,
             "executeCardNum": 6,
@@ -62,7 +62,7 @@
         },
         {
             "id": "7",
-            "name": "7",
+            "cardName": "7",
             "cardNum": 7,
             "drawCardNum": 7,
             "executeCardNum": 7,
@@ -72,7 +72,7 @@
         },
         {
             "id": "8",
-            "name": "8",
+            "cardName": "8",
             "cardNum": 8,
             "drawCardNum": 8,
             "executeCardNum": 8,
@@ -82,7 +82,7 @@
         }, 
         {
             "id": "9",
-            "name": "9",
+            "cardName": "9",
             "cardNum": 9,
             "drawCardNum": 9,
             "executeCardNum": 9,
@@ -92,7 +92,7 @@
         },
         {
             "id": "10",
-            "name": "10",
+            "cardName": "10",
             "cardNum": 10,
             "drawCardNum": 10,
             "executeCardNum": 10,
@@ -102,7 +102,7 @@
         },
         {
             "id": "11",
-            "name": "J",
+            "cardName": "J",
             "cardNum": 11,
             "drawCardNum": 11,
             "executeCardNum": 11,
@@ -112,7 +112,7 @@
         },
         {
             "id": "12",
-            "name": "Q",
+            "cardName": "Q",
             "cardNum": 12,
             "drawCardNum": 12,
             "executeCardNum": 12,
@@ -122,7 +122,7 @@
         },
         {
             "id": "13",
-            "name": "K",
+            "cardName": "K",
             "cardNum": 12,
             "drawCardNum": 13,
             "executeCardNum": 13,
@@ -132,7 +132,7 @@
         },
         {
             "id": "1",
-            "name": "A",
+            "cardName": "A",
             "cardNum": 1,
             "drawCardNum": 1,
             "executeCardNum": 1,
@@ -142,7 +142,7 @@
         },
         {
             "id": "2",
-            "name": "2",
+            "cardName": "2",
             "cardNum": 12,
             "drawCardNum": 2,
             "executeCardNum": 2,
@@ -152,7 +152,7 @@
         },
         {
             "id": "3",
-            "name": "3",
+            "cardName": "3",
             "cardNum": 3,
             "drawCardNum": 3,
             "executeCardNum": 3,
@@ -162,7 +162,7 @@
         },
         {
             "id": "4",
-            "name": "4",
+            "cardName": "4",
             "cardNum": 4,
             "drawCardNum": 4,
             "executeCardNum": 4,
@@ -172,7 +172,7 @@
         },
         {
             "id": "5",
-            "name": "5",
+            "cardName": "5",
             "cardNum": 5,
             "drawCardNum": 5,
             "executeCardNum": 5,
@@ -182,7 +182,7 @@
         },
         {
             "id": "6",
-            "name": "6",
+            "cardName": "6",
             "cardNum": 6,
             "drawCardNum": 6,
             "executeCardNum": 6,
@@ -192,7 +192,7 @@
         },
         {
             "id": "7",
-            "name": "7",
+            "cardName": "7",
             "cardNum": 7,
             "drawCardNum": 7,
             "executeCardNum": 7,
@@ -202,7 +202,7 @@
         },
         {
             "id": "8",
-            "name": "8",
+            "cardName": "8",
             "cardNum": 8,
             "drawCardNum": 8,
             "executeCardNum": 8,
@@ -212,7 +212,7 @@
         }, 
         {
             "id": "9",
-            "name": "9",
+            "cardName": "9",
             "cardNum": 9,
             "drawCardNum": 9,
             "executeCardNum": 9,
@@ -222,7 +222,7 @@
         },
         {
             "id": "10",
-            "name": "10",
+            "cardName": "10",
             "cardNum": 10,
             "drawCardNum": 10,
             "executeCardNum": 10,
@@ -232,7 +232,7 @@
         },
         {
             "id": "11",
-            "name": "J",
+            "cardName": "J",
             "cardNum": 11,
             "drawCardNum": 11,
             "executeCardNum": 11,
@@ -242,7 +242,7 @@
         },
         {
             "id": "12",
-            "name": "Q",
+            "cardName": "Q",
             "cardNum": 12,
             "drawCardNum": 12,
             "executeCardNum": 12,
@@ -252,7 +252,7 @@
         },
         {
             "id": "13",
-            "name": "K",
+            "cardName": "K",
             "cardNum": 12,
             "drawCardNum": 13,
             "executeCardNum": 13,
@@ -262,7 +262,7 @@
         },
         {
             "id": "1",
-            "name": "A",
+            "cardName": "A",
             "cardNum": 1,
             "drawCardNum": 1,
             "executeCardNum": 1,
@@ -272,7 +272,7 @@
         },
         {
             "id": "2",
-            "name": "2",
+            "cardName": "2",
             "cardNum": 12,
             "drawCardNum": 2,
             "executeCardNum": 2,
@@ -282,7 +282,7 @@
         },
         {
             "id": "3",
-            "name": "3",
+            "cardName": "3",
             "cardNum": 3,
             "drawCardNum": 3,
             "executeCardNum": 3,
@@ -292,7 +292,7 @@
         },
         {
             "id": "4",
-            "name": "4",
+            "cardName": "4",
             "cardNum": 4,
             "drawCardNum": 4,
             "executeCardNum": 4,
@@ -302,7 +302,7 @@
         },
         {
             "id": "5",
-            "name": "5",
+            "cardName": "5",
             "cardNum": 5,
             "drawCardNum": 5,
             "executeCardNum": 5,
@@ -312,7 +312,7 @@
         },
         {
             "id": "6",
-            "name": "6",
+            "cardName": "6",
             "cardNum": 6,
             "drawCardNum": 6,
             "executeCardNum": 6,
@@ -322,7 +322,7 @@
         },
         {
             "id": "7",
-            "name": "7",
+            "cardName": "7",
             "cardNum": 7,
             "drawCardNum": 7,
             "executeCardNum": 7,
@@ -332,7 +332,7 @@
         },
         {
             "id": "8",
-            "name": "8",
+            "cardName": "8",
             "cardNum": 8,
             "drawCardNum": 8,
             "executeCardNum": 8,
@@ -342,7 +342,7 @@
         }, 
         {
             "id": "9",
-            "name": "9",
+            "cardName": "9",
             "cardNum": 9,
             "drawCardNum": 9,
             "executeCardNum": 9,
@@ -352,7 +352,7 @@
         },
         {
             "id": "10",
-            "name": "10",
+            "cardName": "10",
             "cardNum": 10,
             "drawCardNum": 10,
             "executeCardNum": 10,
@@ -362,7 +362,7 @@
         },
         {
             "id": "11",
-            "name": "J",
+            "cardName": "J",
             "cardNum": 11,
             "drawCardNum": 11,
             "executeCardNum": 11,
@@ -372,7 +372,7 @@
         },
         {
             "id": "12",
-            "name": "Q",
+            "cardName": "Q",
             "cardNum": 12,
             "drawCardNum": 12,
             "executeCardNum": 12,
@@ -382,7 +382,7 @@
         },
         {
             "id": "13",
-            "name": "K",
+            "cardName": "K",
             "cardNum": 12,
             "drawCardNum": 13,
             "executeCardNum": 13,
@@ -392,7 +392,7 @@
         },
         {
             "id": "1",
-            "name": "A",
+            "cardName": "A",
             "cardNum": 1,
             "drawCardNum": 1,
             "executeCardNum": 1,
@@ -402,7 +402,7 @@
         },
         {
             "id": "2",
-            "name": "2",
+            "cardName": "2",
             "cardNum": 12,
             "drawCardNum": 2,
             "executeCardNum": 2,
@@ -412,7 +412,7 @@
         },
         {
             "id": "3",
-            "name": "3",
+            "cardName": "3",
             "cardNum": 3,
             "drawCardNum": 3,
             "executeCardNum": 3,
@@ -422,7 +422,7 @@
         },
         {
             "id": "4",
-            "name": "4",
+            "cardName": "4",
             "cardNum": 4,
             "drawCardNum": 4,
             "executeCardNum": 4,
@@ -432,7 +432,7 @@
         },
         {
             "id": "5",
-            "name": "5",
+            "cardName": "5",
             "cardNum": 5,
             "drawCardNum": 5,
             "executeCardNum": 5,
@@ -442,7 +442,7 @@
         },
         {
             "id": "6",
-            "name": "6",
+            "cardName": "6",
             "cardNum": 6,
             "drawCardNum": 6,
             "executeCardNum": 6,
@@ -452,7 +452,7 @@
         },
         {
             "id": "7",
-            "name": "7",
+            "cardName": "7",
             "cardNum": 7,
             "drawCardNum": 7,
             "executeCardNum": 7,
@@ -462,7 +462,7 @@
         },
         {
             "id": "8",
-            "name": "8",
+            "cardName": "8",
             "cardNum": 8,
             "drawCardNum": 8,
             "executeCardNum": 8,
@@ -472,7 +472,7 @@
         }, 
         {
             "id": "9",
-            "name": "9",
+            "cardName": "9",
             "cardNum": 9,
             "drawCardNum": 9,
             "executeCardNum": 9,
@@ -482,7 +482,7 @@
         },
         {
             "id": "10",
-            "name": "10",
+            "cardName": "10",
             "cardNum": 10,
             "drawCardNum": 10,
             "executeCardNum": 10,
@@ -492,7 +492,7 @@
         },
         {
             "id": "11",
-            "name": "J",
+            "cardName": "J",
             "cardNum": 11,
             "drawCardNum": 11,
             "executeCardNum": 11,
@@ -502,7 +502,7 @@
         },
         {
             "id": "12",
-            "name": "Q",
+            "cardName": "Q",
             "cardNum": 12,
             "drawCardNum": 12,
             "executeCardNum": 12,
@@ -512,7 +512,7 @@
         },
         {
             "id": "13",
-            "name": "K",
+            "cardName": "K",
             "cardNum": 12,
             "drawCardNum": 13,
             "executeCardNum": 13,

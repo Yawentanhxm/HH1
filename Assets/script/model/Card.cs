@@ -29,6 +29,7 @@ public class Card: MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
     // 拖拽状态
     public bool IsDragging { get; private set; }
     
+    CardLibary cardLibary = new CardLibary();
     void Awake()
     {
         // 自动获取必要组件
@@ -206,5 +207,11 @@ public class Card: MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
                 textComponent.fontSize  = 14;
             }
         }
+    }
+
+    // 将data数据保存到library中
+    public void SaveToLibrary()
+    {
+        cardLibary.SaveCardData(this.cardData);
     }
 }
