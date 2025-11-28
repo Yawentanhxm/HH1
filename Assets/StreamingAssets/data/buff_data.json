@@ -1,0 +1,59 @@
+
+[
+    {
+        "id": 1,
+        "name": "热血",
+        "description": "攻击结算时，攻击伤害增加%d buff层数，每攻击%d次，热血层数减少%d层",
+        "effec_id": 6,
+        "data": [1, 1, 1]
+    },
+    {
+        "id": 2,
+        "name": "灼烧",
+        "description": "回合结束时，扣除%d buff层的伤害（无视护甲），回合结束时灼烧层数除以%d（向上取整）",
+        "effec_id": 7,
+        "data": [2, 2]
+    },
+    {
+        "id": 3,
+        "name": "回复",
+        "description": "回合结束时，增加%d buff层的血量，回合结束时回复层数除以%d（向上取整）",
+        "effec_id": 8,
+        "data": [3, 2]
+    },
+    {
+        "id": 4,
+        "name": "潮湿",
+        "description": "回合结束时，攻击伤害减少%d点（最少减至1）同时潮湿层数减少%d",
+        "effec_id": 9,
+        "data": [4, 4]
+    },
+    {
+        "id": 5,
+        "name": "壁垒",
+        "description": "回合结束时，获得%d buff层的护甲，受到伤害时壁垒层数除以%d（向上取整）",
+        "effec_id": 10,
+        "data": [5, 2]
+    },
+    {
+        "id": 6,
+        "name": "脆弱",
+        "description": "获得护甲时，获得的护甲减去%d buff层数，回合结束时脆弱层数除以%d（向上取整）",
+        "effec_id": 11,
+        "data": [6, 2]
+    },
+    {
+        "id": 7,
+        "name": "自由",
+        "description": "防御时获得%d buff层的额外护甲",
+        "effec_id": 12,
+        "data": [7]
+    },
+    {
+        "id": 8,
+        "name": "风化",
+        "description": "每使用一张牌，扣除%d buff层数的伤害，同时%d buff层数减少%d",
+        "effec_id": 13,
+        "data": [8, 1]
+    }
+]

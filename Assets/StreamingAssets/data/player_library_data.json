@@ -1,0 +1,524 @@
+{
+    "cardList":[
+        {
+            "id": "1",
+            "name": "A",
+            "cardNum": 1,
+            "drawCardNum": 1,
+            "executeCardNum": 1,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "2",
+            "name": "2",
+            "cardNum": 12,
+            "drawCardNum": 2,
+            "executeCardNum": 2,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "3",
+            "name": "3",
+            "cardNum": 3,
+            "drawCardNum": 3,
+            "executeCardNum": 3,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "4",
+            "name": "4",
+            "cardNum": 4,
+            "drawCardNum": 4,
+            "executeCardNum": 4,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "5",
+            "name": "5",
+            "cardNum": 5,
+            "drawCardNum": 5,
+            "executeCardNum": 5,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "6",
+            "name": "6",
+            "cardNum": 6,
+            "drawCardNum": 6,
+            "executeCardNum": 6,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "7",
+            "name": "7",
+            "cardNum": 7,
+            "drawCardNum": 7,
+            "executeCardNum": 7,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "8",
+            "name": "8",
+            "cardNum": 8,
+            "drawCardNum": 8,
+            "executeCardNum": 8,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        }, 
+        {
+            "id": "9",
+            "name": "9",
+            "cardNum": 9,
+            "drawCardNum": 9,
+            "executeCardNum": 9,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "10",
+            "name": "10",
+            "cardNum": 10,
+            "drawCardNum": 10,
+            "executeCardNum": 10,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "11",
+            "name": "J",
+            "cardNum": 11,
+            "drawCardNum": 11,
+            "executeCardNum": 11,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "12",
+            "name": "Q",
+            "cardNum": 12,
+            "drawCardNum": 12,
+            "executeCardNum": 12,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "13",
+            "name": "K",
+            "cardNum": 12,
+            "drawCardNum": 13,
+            "executeCardNum": 13,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 1
+        },
+        {
+            "id": "1",
+            "name": "A",
+            "cardNum": 1,
+            "drawCardNum": 1,
+            "executeCardNum": 1,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "2",
+            "name": "2",
+            "cardNum": 12,
+            "drawCardNum": 2,
+            "executeCardNum": 2,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "3",
+            "name": "3",
+            "cardNum": 3,
+            "drawCardNum": 3,
+            "executeCardNum": 3,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "4",
+            "name": "4",
+            "cardNum": 4,
+            "drawCardNum": 4,
+            "executeCardNum": 4,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "5",
+            "name": "5",
+            "cardNum": 5,
+            "drawCardNum": 5,
+            "executeCardNum": 5,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "6",
+            "name": "6",
+            "cardNum": 6,
+            "drawCardNum": 6,
+            "executeCardNum": 6,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "7",
+            "name": "7",
+            "cardNum": 7,
+            "drawCardNum": 7,
+            "executeCardNum": 7,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "8",
+            "name": "8",
+            "cardNum": 8,
+            "drawCardNum": 8,
+            "executeCardNum": 8,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        }, 
+        {
+            "id": "9",
+            "name": "9",
+            "cardNum": 9,
+            "drawCardNum": 9,
+            "executeCardNum": 9,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "10",
+            "name": "10",
+            "cardNum": 10,
+            "drawCardNum": 10,
+            "executeCardNum": 10,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "11",
+            "name": "J",
+            "cardNum": 11,
+            "drawCardNum": 11,
+            "executeCardNum": 11,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "12",
+            "name": "Q",
+            "cardNum": 12,
+            "drawCardNum": 12,
+            "executeCardNum": 12,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "13",
+            "name": "K",
+            "cardNum": 12,
+            "drawCardNum": 13,
+            "executeCardNum": 13,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 2
+        },
+        {
+            "id": "1",
+            "name": "A",
+            "cardNum": 1,
+            "drawCardNum": 1,
+            "executeCardNum": 1,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "2",
+            "name": "2",
+            "cardNum": 12,
+            "drawCardNum": 2,
+            "executeCardNum": 2,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "3",
+            "name": "3",
+            "cardNum": 3,
+            "drawCardNum": 3,
+            "executeCardNum": 3,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "4",
+            "name": "4",
+            "cardNum": 4,
+            "drawCardNum": 4,
+            "executeCardNum": 4,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "5",
+            "name": "5",
+            "cardNum": 5,
+            "drawCardNum": 5,
+            "executeCardNum": 5,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "6",
+            "name": "6",
+            "cardNum": 6,
+            "drawCardNum": 6,
+            "executeCardNum": 6,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "7",
+            "name": "7",
+            "cardNum": 7,
+            "drawCardNum": 7,
+            "executeCardNum": 7,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "8",
+            "name": "8",
+            "cardNum": 8,
+            "drawCardNum": 8,
+            "executeCardNum": 8,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        }, 
+        {
+            "id": "9",
+            "name": "9",
+            "cardNum": 9,
+            "drawCardNum": 9,
+            "executeCardNum": 9,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "10",
+            "name": "10",
+            "cardNum": 10,
+            "drawCardNum": 10,
+            "executeCardNum": 10,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "11",
+            "name": "J",
+            "cardNum": 11,
+            "drawCardNum": 11,
+            "executeCardNum": 11,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "12",
+            "name": "Q",
+            "cardNum": 12,
+            "drawCardNum": 12,
+            "executeCardNum": 12,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "13",
+            "name": "K",
+            "cardNum": 12,
+            "drawCardNum": 13,
+            "executeCardNum": 13,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 3
+        },
+        {
+            "id": "1",
+            "name": "A",
+            "cardNum": 1,
+            "drawCardNum": 1,
+            "executeCardNum": 1,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "2",
+            "name": "2",
+            "cardNum": 12,
+            "drawCardNum": 2,
+            "executeCardNum": 2,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "3",
+            "name": "3",
+            "cardNum": 3,
+            "drawCardNum": 3,
+            "executeCardNum": 3,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "4",
+            "name": "4",
+            "cardNum": 4,
+            "drawCardNum": 4,
+            "executeCardNum": 4,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "5",
+            "name": "5",
+            "cardNum": 5,
+            "drawCardNum": 5,
+            "executeCardNum": 5,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "6",
+            "name": "6",
+            "cardNum": 6,
+            "drawCardNum": 6,
+            "executeCardNum": 6,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "7",
+            "name": "7",
+            "cardNum": 7,
+            "drawCardNum": 7,
+            "executeCardNum": 7,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "8",
+            "name": "8",
+            "cardNum": 8,
+            "drawCardNum": 8,
+            "executeCardNum": 8,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        }, 
+        {
+            "id": "9",
+            "name": "9",
+            "cardNum": 9,
+            "drawCardNum": 9,
+            "executeCardNum": 9,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "10",
+            "name": "10",
+            "cardNum": 10,
+            "drawCardNum": 10,
+            "executeCardNum": 10,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "11",
+            "name": "J",
+            "cardNum": 11,
+            "drawCardNum": 11,
+            "executeCardNum": 11,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "12",
+            "name": "Q",
+            "cardNum": 12,
+            "drawCardNum": 12,
+            "executeCardNum": 12,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        },
+        {
+            "id": "13",
+            "name": "K",
+            "cardNum": 12,
+            "drawCardNum": 13,
+            "executeCardNum": 13,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "property": 4
+        }
+    ]
+}

@@ -1,0 +1,88 @@
+{
+    "tayinList":[
+    {
+        "id": 1,
+        "name": "补给",
+        "effect_id": 2,
+        "description": "该卡在抽牌阶段视作数字%d",
+        "data": [0]
+    },
+    {
+        "id": 2,
+        "name": "全能",
+        "effect_id": 1,
+        "description": "该卡可视作任意属性",
+        "data": [5]
+    },
+    {
+        "id": 3,
+        "name": "强攻",
+        "effect_id": 3,
+        "description": "该卡在行动阶段数值加%d",
+        "data": [1]
+    },
+    {
+        "id": 4,
+        "name": "连击",
+        "effect_id": 4,
+        "description": "该卡使用时 可额外触发1次",
+        "data": [1]
+    },
+    {
+        "id": 5,
+        "name": "引燃",
+        "effect_id": 5,
+        "description": "该卡使用时给予敌方2层“灼烧”     水属性卡牌无法获得该附魔",
+        "data": [2]
+    },
+    {
+        "id": 6,
+        "name": "冲动",
+        "effect_id": 14,
+        "description": "该卡使用时获得2层“热血”            水属性卡牌无法获得该附魔",
+        "data": [2]
+    },
+    {
+        "id": 7,
+        "name": "疗愈",
+        "effect_id": 14,
+        "description": "该卡使用时获得2层“回复”            火属性卡牌无法获得该附魔",
+        "data": [2]
+    },
+    {
+        "id": 8,
+        "name": "浸润",
+        "effect_id": 5,
+        "description": "该卡使用时给予敌方2层“潮湿”     火属性卡牌无法获得该附魔",
+        "data": [2]
+    },
+    {
+        "id": 9,
+        "name": "防护",
+        "effect_id": 14,
+        "description": "该卡使用时获得2层“壁垒”            风属性卡牌无法获得该附魔",
+        "data": [2]
+    },
+    {
+        "id": 10,
+        "name": "破甲",
+        "effect_id": 5,
+        "description": "该卡使用时给予敌方2层“脆弱”     风属性卡牌无法获得该附魔",
+        "data": [2]
+    },
+    {
+        "id": 11,
+        "name": "灵动",
+        "effect_id": 14,
+        "description": "该卡使用时获得2层“自由”            地属性卡牌无法获得该附魔",
+        "data": [2]
+    },
+    {
+        "id": 12,
+        "name": "侵蚀",
+        "effect_id": 5,
+        "description": "该卡使用时给予敌方2层“风化”     地属性卡牌无法获得该附魔",
+        "data": [2]
+    }
+]
+}
