@@ -72,12 +72,9 @@ public class TayinEntity : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             if (cardDropTarget != null)
             {
                 // 修改牌库中对应卡片id的数据
-                Card card = dropTarget.GetComponent<Card>();
-                card.cardData.tayinId = id;
-                card.SaveToLibrary();
                 cardDropTarget.AssignTayin(this);
                 // 不销毁对象，而是隐藏它
-                gameObject.SetActive(false);
+                Destroy(this.gameObject);
                 return;
             }
         }

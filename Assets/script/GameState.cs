@@ -11,6 +11,7 @@ public class GameState : MonoBehaviour
     // 3：主角抽卡阶段
     // 4：主角行动阶段
     // 5: 敌人攻击阶段
+    // 6: 加载下一关
     // 11: 拓印阶段
     // 99：GameEnd
     public int GameStage = 0;
@@ -43,6 +44,12 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.GameStage == 6)
+        {
+            // 新关卡
+            EnemyInstance.GetComponent<BaseEntity>().addHP(EnemyInstance.GetComponent<BaseEntity>().MaxHP);
+            this.GameStage = 1;
+        }
         // 如敌人死亡进入reward界面
         if (EnemyInstance.GetComponent<BaseEntity>().isDead())
         {

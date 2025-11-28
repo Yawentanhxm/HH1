@@ -22,6 +22,7 @@ public class CardDropTarget : MonoBehaviour
         {
             tayinInfoPanel.SetActive(false);
         }
+        cardData = this.GetComponent<Card>().cardData;
         gameState = GameObject.Find("GameManage").GetComponent<GameState>();
     }
     
@@ -80,7 +81,7 @@ public class CardDropTarget : MonoBehaviour
         CardLibary cardLibrary = gameState.cardLibary;
         if (cardLibrary != null)
         {
-            cardLibrary.SaveLibrary();
+            cardLibrary.SaveCardData(cardData);
             Debug.LogWarning("保存数据成功");
         }
         else

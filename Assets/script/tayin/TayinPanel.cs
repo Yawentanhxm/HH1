@@ -18,6 +18,7 @@ public class TayinPanel : MonoBehaviour
     public List<GameObject> tayinList = new List<GameObject>();
 
     public List<CardData> cardLibary;
+    public bool isActiveAndEnabled = false;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class TayinPanel : MonoBehaviour
 
     void OnEnable()
     {
+        this.isActiveAndEnabled = true;
         InitTayin();
         InitCard();
     }
@@ -96,6 +98,30 @@ public class TayinPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // 更合理的隐藏条件检查
+        if (this.isActiveAndEnabled && ShouldHidePanel())
+        {
+            this.gameObject.SetActive(false);
+            this.isActiveAndEnabled = false;
+            gameState.GameStage = 6;
+        }
+    }
+
+    private bool ShouldHidePanel()
+    {
+        // 根据实际游戏逻辑判断是否应该隐藏面板
+        // 例如：玩家已完成选择、回合结束等
+        if (gameState.GameStage == 11)
+        {
+            for (int i = 0; i < tayinList.Count; i++)
+            {
+                if (tayinList[i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false; // 根据你的具体需求实现
     }
 }
