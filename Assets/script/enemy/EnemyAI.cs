@@ -8,7 +8,6 @@ public class EnemyAI : BaseEntity
 {
     // 游戏内一些全局状态
     public GameObject gameManage;
-    public GameState gameState;
     // 状态
     // public Object status;
     [Header("弃牌堆")]
@@ -19,67 +18,62 @@ public class EnemyAI : BaseEntity
     private bool isAction = false;
 
     // 卡片模型
+    [Header("卡片模型")]
     public GameObject cardPrefab;
     public GameObject drawArea;
-
-
-    void init_libary()
-    {
-        // todo 加大小王
-        for(int i=0; i<52; i++)
-        {
-            CardData temp = new CardData();
-            temp.cardName = ""+((i%13)+1);
-            temp.cardNum = (i%13)+1;
-            // 增加属性
-            temp.property = i/13+1;
-            if (temp.cardNum >= 10) {
-                if(temp.cardNum == 11){
-                    temp.cardName = "J";
-                }
-                if(temp.cardNum == 12){
-                    temp.cardName = "Q";
-                }
-                if(temp.cardNum == 13){
-                    temp.cardName = "K";
-                }
-                temp.cardNum = 10;
-            }
-            cardLibary.Add(temp);
-        }
-        System.Random rnd = new System.Random();
-        cardLibary.Sort((a, b) => rnd.Next(-1, 2));
-        Debug.Log("牌库初始化完毕");
-    }
+    public GameObject cardLibaryInstance;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.gameManage = GameObject.Find("GameManage");
         this.gameState = gameManage.GetComponent<GameState>();
         this.HPBar = this.transform.Find("hp").gameObject;
         if (this.gameState != null){
             Debug.Log(this.gameState.GameStage);
         }
-        // 初始化牌库
-        init_libary();
         this.MaxHP = 20;
         this.HP = 20;
+        // 初始化牌库
+        this.cardLibaryUtils.LoadLibrary("data/enemy_library_data.json");
+        this.cardLibary = this.cardLibaryUtils.cardList;
+        this.cardLibaryData = this.cardLibaryUtils.cardList;
+
+        attackInstance = GameObject.Find("attack");
+        defInstance = GameObject.Find("shield");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(this.gameState.GameStage);
-        if(this.gameState.GameStage == 1) {
-            // 分帧实现异步思考
-            StartCoroutine(ThinkAndDecideCoroutine());
-        }else if(this.gameState.GameStage == 2 && !isAction){
-            StartCoroutine(action());
-        }else if(this.gameState.GameStage == 5){
-            StartCoroutine(execute());
-            IsActionStageEnd();
+        switch (this.gameState.GameStage)
+        {
+            case 0:
+                // 抽牌
+                if (this.firstDraw)
+                {
+                    FirstDraw();
+                }
+                break;
+            case 1:
+                if(!this.drawEnd) {
+                    // 分帧实现异步思考
+                    Evaluate();
+                }
+                this.gameState.GameStage = 3;
+                break;
+            case 2:
+                if(!this.actionEnd) {
+                    // 分帧实现异步思考
+                    action();
+                }
+                this.gameState.GameStage = 4;
+                break;
+            case 5:
+                // 执行
+                execute();
+                break;
         }
-        
     }
 
     // 抽卡逻辑
@@ -97,15 +91,23 @@ public class EnemyAI : BaseEntity
         cardScript.enemyEntity = gameState.PlayerInstance.GetComponent<BaseEntity>();;
         cardScript.cardData = newCardData;
         cardScript.isDraggable = false;
-        // 设置相对于父物体的本地位置
-        newCard.transform.localPosition = new Vector3(-50 - handCard.Count * 150, 0, 0);
+
+        // 保存目标位置
+        Vector3 targetPosition = new Vector3(-50 - handCard.Count * 225, 0, 0);
+
+        // 设置初始位置为牌库位置（可以根据实际牌库位置调整）
+        newCard.transform.localPosition = cardLibaryInstance.transform.localPosition;
+        
+        // 添加动画协程
+        StartCoroutine(MoveCardToHand(newCard, targetPosition));
+
         Transform left = newCard.transform.Find("CardBase/Content/left");
         if (left != null) {
             Text textComponent = left.GetComponent<Text>();
 
             if (textComponent!=null){
                 textComponent.text = newCardData.cardName;
-                textComponent.fontSize  = 14;
+                textComponent.fontSize  = 40;
             }
         }
 
@@ -116,59 +118,44 @@ public class EnemyAI : BaseEntity
 
             if (textComponent!=null){
                 textComponent.text = newCardData.cardName;
-                textComponent.fontSize  = 14;
+                textComponent.fontSize  = 40;
             }
         }
 
         Debug.Log("抽到了"+newCardData.cardName + newCardData.cardNum + newCardData.property);
         handCardPrefab.Add(newCard);
         this.handPoint += newCardData.cardNum;
-        // 过载并进下个阶段
-        if(this.handPoint > 21) {
-            overload = true;
-            this.gameState.GameStage = 4;
-        }
     }
 
-    IEnumerator ThinkAndDecideCoroutine()
-    {
-        // isThinking = true;
-        
-        // 分帧处理初始抽牌
-        yield return StartCoroutine(FirstDraw());
-        // 分帧处理AI思考
-        yield return StartCoroutine(Evaluate());
-        
-        // 思考结束开始运行
-        // isThinking = false;
-        // yield return null;
-    }
-
-    IEnumerator FirstDraw()
+    public void FirstDraw()
     {
         // 第一帧：判断是否是该回合第一次抽卡
-        if(firstDraw)
+        if(firstDraw && !this.drawEnd)
         {
             this.draw();
             this.draw();
             firstDraw = false;
         }
-        yield return null;
     }
-
-    IEnumerator Evaluate()
+    private bool ShouldDraw()
+    {
+        // 判断不在抽卡
+        if (this.handPoint + cardLibary[cardLibary.Count - 1].cardNum > 21) {
+            return false;
+        }
+        return true;
+    }
+    public void Evaluate()
     {
         // 第二帧：评估抽卡带来的收益，从而决定是否抽卡
         // 直接判断下张卡会不会炸
-        Debug.Log("handPoint" + this.handPoint);
-        Debug.Log("next card" + cardLibary[cardLibary.Count - 1].cardNum);
-        if (this.handPoint + cardLibary[cardLibary.Count - 1].cardNum > 21) {
-            this.gameState.GameStage = 2;
-            this.firstDraw = true;
-        }else{
+        // 抽完卡后进入到主角抽卡阶段
+        // 判断不在抽卡
+        if (!this.drawEnd && ShouldDraw()) {
             this.draw();
+        }else{
+            this.drawEnd = true;
         }
-        yield return null;
     }
     
     
@@ -180,45 +167,50 @@ public class EnemyAI : BaseEntity
 
 
     // 行动逻辑逻辑
-    IEnumerator action()
+    public void action()
     {
-        isAction = true;
         Debug.Log("敌人开始行动");
-        // >=5攻击，<5防御
-        for(int i=0; i<handCard.Count; i++){
-            Debug.Log("敌人使用第" + i + "张牌");
-            if(handCard[i].cardNum>=5){
-                attackCard.Add(handCardPrefab[i]);
-            }else{
-                defCard.Add(handCardPrefab[i]);
-                if(handCardPrefab[i])
-                {
-                    handCardPrefab[i].GetComponent<Card>().execute("shield");
-                }
-            }
-            yield return null;
+        // AI行为逻辑
+        // 选取一张牌使用
+        if (handCard.Count <= 0)
+        {
+            Debug.Log("没有牌了");
+            this.gameState.GameStage = 4;
+            this.actionEnd = true;
+            return;
         }
-
-        Debug.Log("hand card Count" + handCard.Count);
-        Debug.Log("attackCard card Count" + attackCard.Count);
-        Debug.Log("defCard card Count" + defCard.Count);
-        this.gameState.GameStage = 3;
-        isAction = false;
+        // 行动逻辑
+        if(handCard[0].cardNum>=5){
+            attackCard.Add(handCardPrefab[0]);
+            Vector3 targetPosition = attackInstance.transform.position;
+            // 添加动画协程
+            StartCoroutine(MoveCardToWorldPosition(handCardPrefab[0], targetPosition));
+        }else{
+            defCard.Add(handCardPrefab[0]);
+            Vector3 targetPosition = defInstance.transform.position;
+            // 添加动画协程
+            StartCoroutine(MoveCardToWorldPosition(handCardPrefab[0], targetPosition));
+        }
+        // 记录卡片放置顺序
+        actionCardPrefab.Add(handCardPrefab[0]);
+        handCard.RemoveAt(0);
+        handCardPrefab.RemoveAt(0);
+        this.gameState.GameStage = 4;
     }
 
-    void IsActionStageEnd()
-    {
-        // 手牌都Miss结束阶段
-        for (int i = 0; i < handCardPrefab.Count; i++) {
-            if (handCardPrefab[i] != null) {
-                return;
-            }
-        }
-        this.gameState.GameStage = 1;
-        this.init_hand_card();
-    }
+    // void IsActionStageEnd()
+    // {
+    //     // 手牌都Miss结束阶段
+    //     for (int i = 0; i < handCardPrefab.Count; i++) {
+    //         if (handCardPrefab[i] != null) {
+    //             return;
+    //         }
+    //     }
+    //     this.gameState.GameStage = 1;
+    //     // this.init_hand_card();
+    // }
 
-    IEnumerator execute()
+    public void execute()
     {
         for(int i=0; i<attackCard.Count; i++){
             Debug.Log("敌人使用第" + i + "张牌");
@@ -226,6 +218,5 @@ public class EnemyAI : BaseEntity
                 attackCard[i].GetComponent<Card>().execute("attack");
             }
         }
-        yield return null;
     }
 }

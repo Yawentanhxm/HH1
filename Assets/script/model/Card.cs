@@ -167,23 +167,49 @@ public class Card: MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
         isDraggable = draggable;
     }
 
-    // 执行卡片效果
+    // 放置卡片
     public void execute(string type)
     {
         // 判断是那边执行
         if(type == "attack"){
-            enemyEntity.GetComponent<BaseEntity>().reduceHP(this.cardData.cardNum);
+            ownerEntity.GetComponent<BaseEntity>().attackCard.Add(this.gameObject);
+            // enemyEntity.GetComponent<BaseEntity>().reduceHP(this.cardData.cardNum);
         }else if(type == "shield"){
-            ownerEntity.GetComponent<BaseEntity>().addShied(this.cardData.cardNum);
+            ownerEntity.GetComponent<BaseEntity>().defCard.Add(this.gameObject);
+            // ownerEntity.GetComponent<BaseEntity>().addShied(this.cardData.cardNum);
         }else if(type == "shu"){
             // ownerEntity.GetComponent<BaseEntity>().drawCard(this.cardData.cardNum);
         }
+        // 拖拽完敌人行动
+        if (ownerEntity.GetComponent<BaseEntity>().handCardPrefab.Contains(this.gameObject))
+        {
+            ownerEntity.GetComponent<BaseEntity>().actionCardPrefab.Add(this.gameObject);
+            ownerEntity.GetComponent<BaseEntity>().handCardPrefab.Remove(this.gameObject);
+        }
+        ownerEntity.GetComponent<BaseEntity>().gameState.GameStage = 2;
         // 根据不同执行类型发挥不同效果
 
+    }
+    
+    public void actionCard()
+    {
+        if(ownerEntity.GetComponent<BaseEntity>().attackCard.Contains(this.gameObject))
+        {
+            enemyEntity.GetComponent<BaseEntity>().reduceHP(this.cardData.cardNum);
+        }else if(ownerEntity.GetComponent<BaseEntity>().defCard.Contains(this.gameObject))
+        {
+            ownerEntity.GetComponent<BaseEntity>().addShied(this.cardData.cardNum);
+        }
+        // // 判断是那边执行
+        // if(type == "attack"){
+        // }else if(type == "shield"){
+        // }else if(type == "shu"){
+        //     // ownerEntity.GetComponent<BaseEntity>().drawCard(this.cardData.cardNum);
+        // }
+        
         // 执行后销毁
         Destroy(this.gameObject);
     }
-    
     public void setCardData(CardData cardData)
     {
         this.cardData = cardData;

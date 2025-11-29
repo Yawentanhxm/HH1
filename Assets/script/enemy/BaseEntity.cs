@@ -17,19 +17,26 @@ public class BaseEntity : MonoBehaviour
     public List<GameObject> StatusList;
 
     public GameObject HPBar;
-    
 
+    public GameState gameState;
 
     [Header("手牌")]
     public List<CardData> handCard;
     public List<GameObject> handCardPrefab = new List<GameObject>();
+    
+    [Header("卡片放置顺序")]
+    public List<GameObject> actionCardPrefab= new List<GameObject>();
     public List<GameObject> attackCard;
     public List<GameObject> defCard;
     public List<GameObject> shuCard;
+    public GameObject attackInstance;
+    public GameObject defInstance;
+
     [Header("牌库原始数据")]
     public List<CardData> cardLibaryData = new List<CardData>();
     [Header("牌库")]
     public List<CardData> cardLibary = new List<CardData>();
+    public CardLibary cardLibaryUtils = new CardLibary();
 
 
 
@@ -40,16 +47,29 @@ public class BaseEntity : MonoBehaviour
     [Header("过载标记位")]
     public bool overload = false;
 
-    public void init_hand_card()
+    public bool drawEnd = false;
+    public bool actionEnd = false;
+
+
+    public void Restart()
     {
+        this.firstDraw = true;
+        this.drawEnd = false;
+        this.actionEnd = false;
+        this.Shied = 0;
+        this.handPoint = 0;
         handCard = new List<CardData>();
         handCardPrefab = new List<GameObject>();
         attackCard = new List<GameObject>();
         defCard = new List<GameObject>();
         shuCard = new List<GameObject>();
-        this.handPoint = 0;
-        this.firstDraw = true;
-        this.overload = false;
+        actionCardPrefab = new List<GameObject>();
+    }
+
+    public bool IsOverLoad()
+    {
+        this.overload = this.handPoint > 21;
+        return this.overload;
     }
 
     public void updateHpBar()
@@ -106,6 +126,76 @@ public class BaseEntity : MonoBehaviour
         buffEntity.layer = layer;
         // 2. 添加到BuffList
         BuffList.Add(buffPrefab);
+    }
+
+    public IEnumerator MoveCardToHand(GameObject card, Vector3 targetPosition)
+    {
+        // 检查对象是否有效
+        if (card == null)
+        {
+            Debug.LogWarning("Card is null, stopping coroutine");
+            yield break;
+        }
+        Vector3 startPosition = card.transform.localPosition;
+        float elapsedTime = 0f;
+        float moveDuration = 0.5f; // 动画持续时间（秒）
+        
+        while (elapsedTime < moveDuration)
+        {
+            // 关键：在每次循环中都要检查card是否仍然存在
+            if (card == null)
+            {
+                Debug.LogWarning("Card was destroyed during movement");
+                yield break;
+            }
+            elapsedTime += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsedTime / moveDuration);
+            // 使用平滑插值使动画更自然
+            float easedProgress = Mathf.SmoothStep(0f, 1f, progress);
+            card.transform.localPosition = Vector3.Lerp(startPosition, targetPosition, easedProgress);
+            yield return null;
+        }
+        
+        // 最后再次检查对象是否存在再设置最终位置
+        if (card != null)
+        {
+            card.transform.localPosition = targetPosition;
+        }
+    }
+
+    public IEnumerator MoveCardToWorldPosition(GameObject card, Vector3 targetPosition)
+    {
+        // 检查对象是否有效
+        if (card == null)
+        {
+            Debug.LogWarning("Card is null, stopping coroutine");
+            yield break;
+        }
+
+        Vector3 startPosition = card.transform.position;
+        float elapsedTime = 0f;
+        float moveDuration = 0.5f;
+        
+        while (elapsedTime < moveDuration)
+        {
+            // 关键：在每次循环中都要检查card是否仍然存在
+            if (card == null)
+            {
+                Debug.LogWarning("Card was destroyed during movement");
+                yield break;
+            }
+            elapsedTime += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsedTime / moveDuration);
+            float easedProgress = Mathf.SmoothStep(0f, 1f, progress);
+            card.transform.position = Vector3.Lerp(startPosition, targetPosition, easedProgress);
+            yield return null;
+        }
+        
+        // 最后再次检查对象是否存在再设置最终位置
+        if (card != null)
+        {
+            card.transform.position = targetPosition;
+        }
     }
 
     public bool isDead()

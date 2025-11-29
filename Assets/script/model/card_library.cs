@@ -12,10 +12,10 @@ public class CardLibary
     }
 
     public List<CardData> cardList = new List<CardData>();
-    public void LoadLibrary()
+    public void LoadLibrary(string path)
     {
         // 读取拓印data目录下的json文件
-        string filePath = Path.Combine(Application.streamingAssetsPath, "data/player_library_data.json");
+        string filePath = Path.Combine(Application.streamingAssetsPath, path);
         
         if (File.Exists(filePath))
         {
