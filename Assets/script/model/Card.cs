@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
+
 
 [RequireComponent(typeof(RectTransform))]
 [RequireComponent(typeof(Image))]
 [RequireComponent(typeof(CanvasGroup))]
-public class Card: MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Card: MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler// IPointerEnterHandler, IPointerExitHandler
 {
     [Header("拖拽设置")]
     [SerializeField] public bool isDraggable = false;
@@ -30,6 +32,18 @@ public class Card: MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
     public bool IsDragging { get; private set; }
     
     CardLibary cardLibary = new CardLibary();
+
+    [Header("悬停显示设置")]
+    public GameObject hoverInfoPanel; // 悬停信息面板
+    // public TextMeshPro descriptionText; // 描述文本组件
+    public Vector3 hoverOffset; // 悬停面板偏移
+    
+    [Header("动画设置")]
+    public float fadeInDuration = 0.3f;
+    public float scaleAmount = 1.1f;
+    
+    private Vector3 originalScale;
+    private bool isHovering = false;
     void Awake()
     {
         // 自动获取必要组件
@@ -49,6 +63,29 @@ public class Card: MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
         {
             image.raycastTarget = true;
         }
+    }
+    void Start()
+    {
+        
+        if (hoverInfoPanel != null)
+        {
+            hoverInfoPanel.SetActive(true);
+        }
+        else
+        {
+            // 更安全的获取子对象方式
+            Transform hoverInfoTransform = this.transform.Find("CardBase/HoverInfo");
+            if (hoverInfoTransform != null)
+            {
+                hoverInfoPanel = hoverInfoTransform.gameObject;
+                hoverInfoPanel.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("未找到名为 'HoverInfo' 的子对象", this);
+            }
+        }
+        hoverOffset = new Vector3(100, 0, 0);
     }
     
     // 开始拖拽
@@ -72,6 +109,40 @@ public class Card: MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
         if (canvas != null)
         {
             transform.SetParent(canvas.transform);
+        }
+    }
+
+    public void InitCardInstance()
+    {
+        Transform left = this.transform.Find("CardBase/Content/left");
+        if (left != null) {
+            Text textComponent = left.GetComponent<Text>();
+
+            if (textComponent!=null){
+                textComponent.text = this.cardData.cardName;
+                textComponent.fontSize  = 40;
+            }
+        }
+
+        
+        Transform right = this.transform.Find("CardBase/Content/right");
+        if (right != null) {
+            Text textComponent = right.GetComponent<Text>();
+
+            if (textComponent!=null){
+                textComponent.text = this.cardData.cardName;
+                textComponent.fontSize  = 40;
+            }
+        }
+
+        Transform tayinDesc = this.transform.Find("CardBase/HoverInfo");
+        if (tayinDesc != null) {
+            Text textComponent = tayinDesc.GetComponent<Text>();
+
+            if (textComponent!=null){
+                textComponent.text = this.cardData.description;
+                textComponent.fontSize  = 14;
+            }
         }
     }
     
@@ -239,5 +310,83 @@ public class Card: MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
     public void SaveToLibrary()
     {
         cardLibary.SaveCardData(this.cardData);
+    }
+
+    // 鼠标进入时调用
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        isHovering = true;
+        ShowHoverInfo();
+        // StartHoverAnimation();
+    }
+
+    // 鼠标离开时调用
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isHovering = false;
+        HideHoverInfo();
+        // StopHoverAnimation();
+    }
+
+    void ShowHoverInfo()
+    {
+        if (hoverInfoPanel != null)
+        {
+            // 设置悬停面板位置
+            hoverInfoPanel.transform.position = this.transform.position + hoverOffset;
+            hoverInfoPanel.SetActive(true);
+            
+            // 启动淡入动画
+            // StartCoroutine(FadeInPanel());
+        }
+    }
+
+    void HideHoverInfo()
+    {
+        if (hoverInfoPanel != null)
+        {
+            hoverInfoPanel.SetActive(false);
+        }
+    }
+
+    void StartHoverAnimation()
+    {
+        // 卡片放大效果
+        LeanTween.scale(gameObject, originalScale * scaleAmount, 0.2f)
+                 .setEase(LeanTweenType.easeOutBack);
+    }
+
+    void StopHoverAnimation()
+    {
+        // 恢复原始大小
+        LeanTween.scale(gameObject, originalScale, 0.2f)
+                 .setEase(LeanTweenType.easeInOutCubic);
+    }
+
+    System.Collections.IEnumerator FadeInPanel()
+    {
+        if (hoverInfoPanel != null)
+        {
+            CanvasGroup canvasGroup = hoverInfoPanel.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = hoverInfoPanel.AddComponent<CanvasGroup>();
+            }
+            
+            canvasGroup.alpha = 0f;
+            float timer = 0f;
+            
+            while (timer < fadeInDuration && isHovering)
+            {
+                canvasGroup.alpha = Mathf.Lerp(0f, 1f, timer / fadeInDuration);
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            
+            if (isHovering)
+            {
+                canvasGroup.alpha = 1f;
+            }
+        }
     }
 }

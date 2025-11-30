@@ -1171,8 +1171,10 @@ MonoBehaviour:
   BuffList: []
   StatusList: []
   HPBar: {fileID: 0}
+  gameState: {fileID: 0}
   handCard: []
   handCardPrefab: []
+  actionCardPrefab: []
   attackCard: []
   defCard: []
   shuCard: []
@@ -1186,7 +1188,6 @@ MonoBehaviour:
   drawEnd: 0
   actionEnd: 0
   gameObject: {fileID: 793081383}
-  gameState: {fileID: 0}
   DiscardCard: []
   cardPrefab: {fileID: 3973535366717957953, guid: d3a4d305b365d2b43a9a9bbd831ebf8f, type: 3}
   drawArea: {fileID: 334824249}
@@ -3334,8 +3335,10 @@ MonoBehaviour:
   BuffList: []
   StatusList: []
   HPBar: {fileID: 0}
+  gameState: {fileID: 0}
   handCard: []
   handCardPrefab: []
+  actionCardPrefab: []
   attackCard: []
   defCard: []
   shuCard: []
@@ -3349,7 +3352,6 @@ MonoBehaviour:
   drawEnd: 0
   actionEnd: 0
   gameManage: {fileID: 793081383}
-  gameState: {fileID: 0}
   DiscardCard: []
   cardPrefab: {fileID: 3973535366717957953, guid: d3a4d305b365d2b43a9a9bbd831ebf8f, type: 3}
   drawArea: {fileID: 2129305688}

@@ -12,6 +12,8 @@ public class TayinEntity : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public EffectEntity effectEntity;
     [Header("参数列表")]
     public List<int> data;
+    [Header("参数列表")]
+    public string description;
 
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
@@ -29,12 +31,13 @@ public class TayinEntity : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
     }
 
-    public TayinEntity(int id, string name, EffectEntity effectEntity, List<int> data)
+    public TayinEntity(int id, string name, EffectEntity effectEntity, List<int> data, string description)
     {
         this.id = id;
         this.Name = name;
         this.effectEntity = effectEntity;
         this.data = data ?? new List<int>();
+        this.description = description;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -89,5 +92,6 @@ public class TayinEntity : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         Name = tayinEntity.Name;
         effectEntity = tayinEntity.effectEntity;
         data = tayinEntity.data;
+        description = tayinEntity.description;
     }
 }

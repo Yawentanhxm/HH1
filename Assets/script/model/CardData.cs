@@ -18,7 +18,7 @@ public class CardData
     public int tayinId;
     // 1:地。2：火：3：水，4：风，5： 任意
     public int property;
-    [TextArea(3, 5)]
+    // [TextArea(3, 5)]
     public string description;
     public CardType cardType;
     public CardRarity rarity;

@@ -159,7 +159,7 @@ public class Player : BaseEntity
         cardScript.enemyEntity = gameState.EnemyInstance.GetComponent<BaseEntity>();
         cardScript.cardData = newCardData;
         cardScript.isDraggable = false;
-
+        cardScript.InitCardInstance();
 
         // 保存目标位置
         Vector3 targetPosition = new Vector3(handCard.Count * 225, 0, 0);
@@ -169,26 +169,6 @@ public class Player : BaseEntity
         // 添加动画协程
         StartCoroutine(MoveCardToHand(newCard, targetPosition));
         
-        Transform left = newCard.transform.Find("CardBase/Content/left");
-        if (left != null) {
-            Text textComponent = left.GetComponent<Text>();
-
-            if (textComponent!=null){
-                textComponent.text = newCardData.cardName;
-                textComponent.fontSize  = 40;
-            }
-        }
-
-        
-        Transform right = newCard.transform.Find("CardBase/Content/right");
-        if (right != null) {
-            Text textComponent = right.GetComponent<Text>();
-
-            if (textComponent!=null){
-                textComponent.text = newCardData.cardName;
-                textComponent.fontSize  = 40;
-            }
-        }
         this.handPoint += newCardData.cardNum;
         Debug.Log("抽到了"+newCardData.cardName + newCardData.cardNum + newCardData.property);
         this.handCardPrefab.Add(newCard);

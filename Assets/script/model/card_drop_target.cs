@@ -40,6 +40,7 @@ public class CardDropTarget : MonoBehaviour
         if (cardData != null)
         {
             cardData.tayinId = tayin.id;
+            cardData.description = tayin.description;
             SaveToPlayerLibrary();
         }
         

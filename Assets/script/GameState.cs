@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // 添加这一行
 
 public class GameState : MonoBehaviour
 {
@@ -52,8 +53,9 @@ public class GameState : MonoBehaviour
                 break;
             case 6:
                 // 新关卡
-                EnemyInstance.GetComponent<BaseEntity>().addHP(EnemyInstance.GetComponent<BaseEntity>().MaxHP);
-                this.GameStage = 1;
+                // EnemyInstance.GetComponent<BaseEntity>().addHP(EnemyInstance.GetComponent<BaseEntity>().MaxHP);
+                ReloadCurrentScene();
+                this.GameStage = 0;
                 break;
             case 1: case 3:
                 // 双方抽牌结束
@@ -107,5 +109,12 @@ public class GameState : MonoBehaviour
             }
             i++;
         }
+    }
+
+    // 添加这个新方法来重新加载当前场景
+    private void ReloadCurrentScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 }
