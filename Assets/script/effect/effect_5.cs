@@ -16,7 +16,7 @@ class Effect_5 : EffectEntity
     [Header("效果参数")]
     public List<int> data;
 
-    public void execute()
+    public override  void Execute()
     {
         // 给予敌方x层y buff
         if (gameState.GameStage == timing){

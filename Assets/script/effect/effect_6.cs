@@ -29,7 +29,7 @@ class Effect_6 : EffectEntity
     }
 
 
-    public void execute()
+    public override  void Execute()
     {
         // 攻击伤害增加x buff层数，每攻击x次，x buff层数减少z
         if (gameState.GameStage == timing){

@@ -4,13 +4,10 @@ using System.Collections.Generic;
 
 class Effect_4 : EffectEntity
 {
-    public int number;
-    public int timing;
-    public CardData cardData;
-    public GameState gameState;
-    public List<int> data;
+    public int number = 4;
+    public int timing = 11;
 
-    public void execute()
+    public override  void Execute()
     {
         // 额外触发x次
         if (gameState.GameStage == timing){

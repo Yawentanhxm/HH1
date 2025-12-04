@@ -23,6 +23,6 @@ class BuffEntity : MonoBehaviour
     public void excute()
     {
         Debug.Log("buff" + buffName + "：执行");
-        effectEntity.excute();
+        effectEntity.Execute();
     }
 }

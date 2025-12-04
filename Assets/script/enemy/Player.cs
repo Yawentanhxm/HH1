@@ -169,7 +169,7 @@ public class Player : BaseEntity
         // 添加动画协程
         StartCoroutine(MoveCardToHand(newCard, targetPosition));
         
-        this.handPoint += newCardData.cardNum;
+        this.handPoint += newCardData.drawCardNum;
         Debug.Log("抽到了"+newCardData.cardName + newCardData.cardNum + newCardData.property);
         this.handCardPrefab.Add(newCard);
     }

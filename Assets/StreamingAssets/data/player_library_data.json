@@ -1,1 +1,238 @@
-{"cardList":[{"id":"1","cardName":"A","cardNum":1,"drawCardNum":1,"executeCardNum":1,"attackDamage":0,"replyNum":0,"tayinId":6,"property":1,"description":"该卡使用时获得2层“热血”            水属性卡牌无法获得该附魔","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"2","cardName":"2","cardNum":12,"drawCardNum":2,"executeCardNum":2,"attackDamage":0,"replyNum":0,"tayinId":10,"property":1,"description":"该卡使用时给予敌方2层“脆弱”     风属性卡牌无法获得该附魔","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"3","cardName":"3","cardNum":3,"drawCardNum":3,"executeCardNum":3,"attackDamage":0,"replyNum":0,"tayinId":7,"property":1,"description":"该卡使用时获得2层“回复”            火属性卡牌无法获得该附魔","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"4","cardName":"4","cardNum":4,"drawCardNum":4,"executeCardNum":4,"attackDamage":0,"replyNum":0,"tayinId":0,"property":1,"description":"","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"5","cardName":"5","cardNum":5,"drawCardNum":5,"executeCardNum":5,"attackDamage":0,"replyNum":0,"tayinId":3,"property":1,"description":"","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"6","cardName":"6","cardNum":6,"drawCardNum":6,"executeCardNum":6,"attackDamage":0,"replyNum":0,"tayinId":9,"property":1,"description":"该卡使用时获得2层“壁垒”            风属性卡牌无法获得该附魔","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"7","cardName":"7","cardNum":7,"drawCardNum":7,"executeCardNum":7,"attackDamage":0,"replyNum":0,"tayinId":9,"property":1,"description":"","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"8","cardName":"8","cardNum":8,"drawCardNum":8,"executeCardNum":8,"attackDamage":0,"replyNum":0,"tayinId":0,"property":1,"description":"","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"9","cardName":"9","cardNum":9,"drawCardNum":9,"executeCardNum":9,"attackDamage":0,"replyNum":0,"tayinId":0,"property":1,"description":"","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"10","cardName":"10","cardNum":10,"drawCardNum":10,"executeCardNum":10,"attackDamage":0,"replyNum":0,"tayinId":5,"property":1,"description":"该卡使用时给予敌方2层“灼烧”     水属性卡牌无法获得该附魔","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"11","cardName":"J","cardNum":11,"drawCardNum":11,"executeCardNum":11,"attackDamage":0,"replyNum":0,"tayinId":7,"property":1,"description":"该卡使用时获得2层“回复”            火属性卡牌无法获得该附魔","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"12","cardName":"Q","cardNum":12,"drawCardNum":12,"executeCardNum":12,"attackDamage":0,"replyNum":0,"tayinId":5,"property":1,"description":"该卡使用时给予敌方2层“灼烧”     水属性卡牌无法获得该附魔","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}},{"id":"13","cardName":"K","cardNum":12,"drawCardNum":13,"executeCardNum":13,"attackDamage":0,"replyNum":0,"tayinId":10,"property":1,"description":"该卡使用时给予敌方2层“脆弱”     风属性卡牌无法获得该附魔","cardType":0,"rarity":0,"attack":0,"cardPrefab":{"instanceID":0}}]}
+{
+    "cardList": [
+        {
+            "id": "1",
+            "cardName": "A",
+            "cardNum": 1,
+            "drawCardNum": 1,
+            "executeCardNum": 1,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 6,
+            "property": 1,
+            "description": "该卡使用时获得2层“热血”            水属性卡牌无法获得该附魔",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "2",
+            "cardName": "2",
+            "cardNum": 12,
+            "drawCardNum": 2,
+            "executeCardNum": 2,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 10,
+            "property": 1,
+            "description": "该卡使用时给予敌方2层“脆弱”     风属性卡牌无法获得该附魔",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "3",
+            "cardName": "3",
+            "cardNum": 3,
+            "drawCardNum": 3,
+            "executeCardNum": 3,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 7,
+            "property": 1,
+            "description": "该卡使用时获得2层“回复”            火属性卡牌无法获得该附魔",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "4",
+            "cardName": "4",
+            "cardNum": 4,
+            "drawCardNum": 4,
+            "executeCardNum": 4,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 2,
+            "property": 1,
+            "description": "该卡可视作任意属性",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "5",
+            "cardName": "5",
+            "cardNum": 5,
+            "drawCardNum": 5,
+            "executeCardNum": 5,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 3,
+            "property": 1,
+            "description": "",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "6",
+            "cardName": "6",
+            "cardNum": 6,
+            "drawCardNum": 6,
+            "executeCardNum": 6,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 9,
+            "property": 1,
+            "description": "该卡使用时获得2层“壁垒”            风属性卡牌无法获得该附魔",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "7",
+            "cardName": "7",
+            "cardNum": 7,
+            "drawCardNum": 7,
+            "executeCardNum": 7,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 2,
+            "property": 1,
+            "description": "该卡可视作任意属性",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "8",
+            "cardName": "8",
+            "cardNum": 8,
+            "drawCardNum": 8,
+            "executeCardNum": 8,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 0,
+            "property": 1,
+            "description": "",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "9",
+            "cardName": "9",
+            "cardNum": 9,
+            "drawCardNum": 9,
+            "executeCardNum": 9,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 0,
+            "property": 1,
+            "description": "",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "10",
+            "cardName": "10",
+            "cardNum": 10,
+            "drawCardNum": 0,
+            "executeCardNum": 10,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 1,
+            "property": 1,
+            "description": "该卡在抽牌阶段视作数字%d",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "11",
+            "cardName": "J",
+            "cardNum": 11,
+            "drawCardNum": 0,
+            "executeCardNum": 13,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 3,
+            "property": 1,
+            "description": "该卡在行动阶段数值加%d",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "12",
+            "cardName": "Q",
+            "cardNum": 12,
+            "drawCardNum": 12,
+            "executeCardNum": 12,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 2,
+            "property": 5,
+            "description": "该卡可视作任意属性",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        },
+        {
+            "id": "13",
+            "cardName": "K",
+            "cardNum": 12,
+            "drawCardNum": 13,
+            "executeCardNum": 13,
+            "attackDamage": 0,
+            "replyNum": 0,
+            "tayinId": 3,
+            "property": 1,
+            "description": "该卡在行动阶段数值加%d",
+            "cardType": 0,
+            "rarity": 0,
+            "attack": 0,
+            "cardPrefab": {
+                "instanceID": 0
+            }
+        }
+    ]
+}

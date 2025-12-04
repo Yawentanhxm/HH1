@@ -94,4 +94,10 @@ public class TayinEntity : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         data = tayinEntity.data;
         description = tayinEntity.description;
     }
+
+    public void ApplyToCard(CardData cardData,GameState gameState)
+    {
+        this.effectEntity.init(cardData, gameState, data);
+        this.effectEntity.Execute();
+    }
 }

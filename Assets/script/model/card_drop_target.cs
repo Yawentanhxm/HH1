@@ -41,6 +41,7 @@ public class CardDropTarget : MonoBehaviour
         {
             cardData.tayinId = tayin.id;
             cardData.description = tayin.description;
+            tayin.ApplyToCard(cardData, gameState);
             SaveToPlayerLibrary();
         }
         
