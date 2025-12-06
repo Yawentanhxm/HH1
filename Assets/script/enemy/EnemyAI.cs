@@ -48,28 +48,28 @@ public class EnemyAI : BaseEntity
     {
         switch (this.gameState.GameStage)
         {
-            case 0:
+            case GameStageType.GameStart:
                 // 抽牌
                 if (this.firstDraw)
                 {
                     FirstDraw();
                 }
                 break;
-            case 1:
+            case GameStageType.EnemyDraw:
                 if(!this.drawEnd) {
                     // 分帧实现异步思考
                     Evaluate();
                 }
-                this.gameState.GameStage = 3;
+                this.gameState.DrawDone();
                 break;
-            case 2:
+            case GameStageType.EnemyAction:
                 if(!this.actionEnd) {
                     // 分帧实现异步思考
                     action();
                 }
-                this.gameState.GameStage = 4;
+                this.gameState.ActionDone();
                 break;
-            case 5:
+            case GameStageType.EnemyAttack:
                 // 执行
                 execute();
                 break;
@@ -175,7 +175,7 @@ public class EnemyAI : BaseEntity
         if (handCard.Count <= 0)
         {
             Debug.Log("没有牌了");
-            this.gameState.GameStage = 4;
+            this.gameState.SetStage(GameStageType.PlayerAction);
             this.actionEnd = true;
             return;
         }
@@ -195,20 +195,8 @@ public class EnemyAI : BaseEntity
         actionCardPrefab.Add(handCardPrefab[0]);
         handCard.RemoveAt(0);
         handCardPrefab.RemoveAt(0);
-        this.gameState.GameStage = 4;
+        this.gameState.SetStage(GameStageType.PlayerAction);
     }
-
-    // void IsActionStageEnd()
-    // {
-    //     // 手牌都Miss结束阶段
-    //     for (int i = 0; i < handCardPrefab.Count; i++) {
-    //         if (handCardPrefab[i] != null) {
-    //             return;
-    //         }
-    //     }
-    //     this.gameState.GameStage = 1;
-    //     // this.init_hand_card();
-    // }
 
     public void execute()
     {

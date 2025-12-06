@@ -1,8 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // 添加这一行
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
+
+public enum GameStageType
+{
+    GameStart = 0,
+    EnemyDraw = 1,
+    EnemyAction = 2,
+    PlayerDraw = 3,
+    PlayerAction = 4,
+    EnemyAttack = 5,
+    NextLevel = 6,
+    ActionEnd = 7,
+    Tayin = 11,
+    GameEnd = 99,
+    Wait = 999
+}
 public class GameState : MonoBehaviour
 {
     // 1. 流程管理功能：反派先抽卡 → 反派放卡 →主角抽卡 →主角抽完卡后点确认 → 主角放卡的同时打出伤害/护甲/技能 →点击结束回合 →反派行动
@@ -16,7 +33,7 @@ public class GameState : MonoBehaviour
     // 6: 加载下一关
     // 11: 拓印阶段
     // 99：GameEnd
-    public int GameStage = 0;
+    public GameStageType GameStage = GameStageType.GameStart;
     // 游戏双方
     public GameObject PlayerInstance;
     public GameObject EnemyInstance;
@@ -28,6 +45,14 @@ public class GameState : MonoBehaviour
     public TayinLibrary tayinLibrary;
     [Header("玩家牌库")]
     public CardLibary cardLibary;
+    private Text text;
+    // 等待时间（秒）
+    public float stageTransitionDelay = 0.01f;
+    
+    // 正在等待阶段转换
+    private bool isWaitingForTransition = false;
+    private bool DrawFlag = false;
+    private bool ActionFlag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +63,7 @@ public class GameState : MonoBehaviour
         tayinLibrary.LoadLibrary();
         cardLibary = new CardLibary();
         cardLibary.LoadLibrary("data/player_library_data.json");
+        text = GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -45,54 +71,112 @@ public class GameState : MonoBehaviour
     {
         switch (this.GameStage)
         {
-            case 0:
-            if (!EnemyInstance.GetComponent<BaseEntity>().firstDraw && !PlayerInstance.GetComponent<BaseEntity>().firstDraw)
-            {
-                this.GameStage = 1;
-            }
+            case GameStageType.GameStart:
+                if (!EnemyInstance.GetComponent<BaseEntity>().firstDraw && !PlayerInstance.GetComponent<BaseEntity>().firstDraw)
+                {
+                    SetStage(GameStageType.EnemyDraw);
+                }
                 break;
-            case 6:
+            case GameStageType.NextLevel:
                 // 新关卡
                 // EnemyInstance.GetComponent<BaseEntity>().addHP(EnemyInstance.GetComponent<BaseEntity>().MaxHP);
                 ReloadCurrentScene();
-                this.GameStage = 0;
+                SetStage(GameStageType.GameStart);
+                // this.GameStage = GameStageType.GameStart;
                 break;
-            case 1: case 3:
+            case GameStageType.EnemyDraw:
+            case GameStageType.PlayerDraw:
                 // 双方抽牌结束
-                if(EnemyInstance.GetComponent<EnemyAI>().drawEnd && PlayerInstance.GetComponent<BaseEntity>().drawEnd)
+                if(DrawFlag)
                 {
-                    this.GameStage = 2;
+                    if (PlayerInstance.GetComponent<BaseEntity>().drawEnd && EnemyInstance.GetComponent<BaseEntity>().drawEnd)
+                    {
+                        SetStage(GameStageType.EnemyAction);
+                    }
+                    else if(PlayerInstance.GetComponent<BaseEntity>().drawEnd)
+                    {
+                        SetStage(GameStageType.EnemyDraw);
+                    }
+                    else
+                    {
+                        SetStage(GameStageType.PlayerDraw);
+                    }
+                    this.DrawFlag = false;
                 }
                 break;
-            case 2:case 4:
-                // 双方行动结束，计算伤害
-                if(EnemyInstance.GetComponent<EnemyAI>().actionEnd && PlayerInstance.GetComponent<BaseEntity>().actionEnd)
+            case GameStageType.EnemyAction:
+            case GameStageType.PlayerAction:
+                if(this.ActionFlag)
                 {
-                    this.GameStage = 7;
+                    // 双方行动结束，计算伤害
+                    if(EnemyInstance.GetComponent<BaseEntity>().actionEnd && PlayerInstance.GetComponent<BaseEntity>().actionEnd)
+                    {
+                        SetStage(GameStageType.ActionEnd);
+                    }
+                    else if(PlayerInstance.GetComponent<BaseEntity>().actionEnd)
+                    {
+                        SetStage(GameStageType.EnemyAction);
+                    }
+                    else
+                    {
+                        SetStage(GameStageType.PlayerAction);
+                    }
+                    this.ActionFlag = false;
                 }
                 break;
-            case 7:
+            case GameStageType.ActionEnd:
                 // 按照顺序出发卡片效果
                 ActionCardExcute();
                 EnemyInstance.GetComponent<BaseEntity>().Restart();
                 PlayerInstance.GetComponent<BaseEntity>().Restart();
-                this.GameStage = 0;
+                SetStage(GameStageType.GameStart);
                 break;
         }
 
         // 如敌人死亡进入reward界面
-        if (EnemyInstance.GetComponent<BaseEntity>().isDead())
+        if (EnemyInstance.GetComponent<BaseEntity>().isDead() && GameStage != GameStageType.Tayin)
         {
             Debug.Log("Enemy is dead");
-            this.GameStage = 11;
+            SetStage(GameStageType.Tayin);
             this.TayinPanel.SetActive(true);
         }
         // 如果角色死亡进入gameover界面
-        if (PlayerInstance.GetComponent<BaseEntity>().isDead())
+        if (PlayerInstance.GetComponent<BaseEntity>().isDead() && GameStage != GameStageType.GameEnd)
         {
             Debug.Log("Player is dead");
-            this.GameStage = 99;
+            SetStage(GameStageType.GameEnd);
         }
+    }
+    public void SetStage(GameStageType gameStage)
+    {
+        if (gameStage == GameStageType.NextLevel)
+        {
+            this.GameStage = gameStage;
+            return;
+        }
+        this.GameStage = GameStageType.Wait;
+        StartCoroutine(TransitionToStage(gameStage));
+        // text.text = "修仙阶段：" + gameStage.ToString();
+        // this.GameStage = gameStage;
+    }
+
+    
+    private IEnumerator TransitionToStage(GameStageType gameStage)
+    {
+        isWaitingForTransition = true;
+        
+        // 显示即将切换到的阶段
+        if (text != null)
+        {
+            text.text = "修仙阶段：" + gameStage.ToString();
+        }
+        
+        // 等待指定的时间
+        yield return new WaitForSeconds(stageTransitionDelay);
+        
+        // 实际切换阶段
+        this.GameStage = gameStage;
+        isWaitingForTransition = false;
     }
     public void ActionCardExcute()
     {
@@ -116,5 +200,13 @@ public class GameState : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+    }
+    public void DrawDone()
+    {
+        this.DrawFlag = true;
+    }
+    public void ActionDone()
+    {
+        this.ActionFlag = true;
     }
 }

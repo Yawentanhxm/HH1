@@ -48,10 +48,10 @@ public class Player : BaseEntity
     void OnButtonClicked()
     {
         // 抽卡阶段且未过载
-        if(this.gameState.GameStage == 3 && overload == false) {
-            draw();
+        if(this.gameState.GameStage == GameStageType.PlayerDraw && overload == false) {
+            this.draw();
             // 抽完卡进入敌人抽卡环节
-            this.gameState.GameStage = 1;
+            this.gameState.DrawDone();
         }
     }
 
@@ -59,8 +59,8 @@ public class Player : BaseEntity
     {
         Debug.Log("Button找到，开始添加监听");
         // 抽卡阶段结束回合结束
-        if(this.gameState.GameStage == 3) {
-            this.gameState.GameStage = 1;
+        if(this.gameState.GameStage == GameStageType.PlayerDraw) {
+            this.gameState.SetStage(GameStageType.EnemyDraw);
             this.drawEnd = true;
         }
     }
@@ -95,31 +95,27 @@ public class Player : BaseEntity
     {
         switch (this.gameState.GameStage)
         {
-            case 0:
+            case GameStageType.GameStart:
                 if (this.firstDraw)
                 {
                     FirstDraw();
                 }
                 break;
-            case 3:
+            case GameStageType.PlayerDraw:
                 if (IsOverLoad())
                 {
                     this.drawEnd = true;
                     this.actionEnd = true;
-                    this.gameState.GameStage = 1;
+                    this.gameState.SetStage(GameStageType.EnemyDraw);
                     for (int i = 0; i < handCardPrefab.Count; i++) {
                         if (handCardPrefab[i])
                         {
                             Destroy(handCardPrefab[i]);
                         }
                     }
-                }else if (this.drawEnd)
-                {
-                    // 抽完卡进入敌人抽卡环节
-                    this.gameState.GameStage = 1;
                 }
                 break;
-            case 4:
+            case GameStageType.PlayerAction:
                 // 行动阶段没结束，设置可怕可拖拽
                 if (!this.actionEnd)
                 {
@@ -131,15 +127,17 @@ public class Player : BaseEntity
                     }
                     if (handCardPrefab.Count <= 0)
                     {
+                        this.gameState.ActionDone();
                         this.actionEnd = true;
                     }
                 }
                 else
                 {
-                    this.gameState.GameStage = 2;
+                    // this.gameState.SetStage(GameStageType.EnemyAction);
+                    this.gameState.ActionDone();
                 }
                 break;
-        }
+        }   
     }
 
 
@@ -196,10 +194,10 @@ public class Player : BaseEntity
                 overload = true;
                 this.actionEnd = true;
                 this.drawEnd = true;
-                this.gameState.GameStage = 2;
+                this.gameState.SetStage(GameStageType.EnemyAction);
             }
         }else if(Input.GetKeyDown(KeyCode.Escape)){
-            this.gameState.GameStage = 4;
+            this.gameState.SetStage(GameStageType.PlayerAction);
         }
     }
     

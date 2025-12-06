@@ -6,7 +6,8 @@ class Effect_6 : EffectEntity
 {
     // 导表参数
     public int number = 1;
-    public int timing = 4;
+    
+    public GameStageType timing = GameStageType.PlayerAction;
 
     // 游戏实例化时赋值
     [Header("拓印卡牌")]

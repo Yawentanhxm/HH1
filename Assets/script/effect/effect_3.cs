@@ -5,7 +5,7 @@ using System.Collections.Generic;
 class Effect_3 : EffectEntity
 {
     public int number = 3;
-    public int timing = 11;
+    public GameStageType timing = GameStageType.Tayin;
 
     public override void Execute()
     {

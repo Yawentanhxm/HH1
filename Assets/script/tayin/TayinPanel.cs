@@ -137,7 +137,7 @@ public class TayinPanel : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             this.isActiveAndEnabled = false;
-            gameState.GameStage = 6;
+            this.gameState.SetStage(GameStageType.NextLevel);
         }
     }
 
@@ -145,7 +145,7 @@ public class TayinPanel : MonoBehaviour
     {
         // 根据实际游戏逻辑判断是否应该隐藏面板
         // 例如：玩家已完成选择、回合结束等
-        if (gameState.GameStage == 11)
+        if (gameState.GameStage == GameStageType.Tayin)
         {
             for (int i = 0; i < tayinList.Count; i++)
             {

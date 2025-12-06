@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public abstract class EffectEntity
 {
     // 导表参数
-    public int number = 1;
-    public int timing = 4;
+    public int number;
+    public GameStageType timing;
 
     // 游戏实例化时赋值
     [Header("拓印卡牌")]

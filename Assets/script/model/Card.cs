@@ -257,7 +257,7 @@ public class Card: MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
             ownerEntity.GetComponent<BaseEntity>().actionCardPrefab.Add(this.gameObject);
             ownerEntity.GetComponent<BaseEntity>().handCardPrefab.Remove(this.gameObject);
         }
-        ownerEntity.GetComponent<BaseEntity>().gameState.GameStage = 2;
+        ownerEntity.GetComponent<BaseEntity>().gameState.SetStage(GameStageType.EnemyAction);
         // 根据不同执行类型发挥不同效果
 
     }
